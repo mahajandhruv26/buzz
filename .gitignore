@@ -1,0 +1,19 @@
+# Build output
+/target/
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Claude Code settings
+.claude/
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Cargo lock is included for binary crates (recommended by Rust)
+# Do NOT ignore Cargo.lock
