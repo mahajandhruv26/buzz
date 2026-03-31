@@ -87,8 +87,11 @@ mod tests {
         for display in [true, false] {
             for system in [true, false] {
                 let flags = build_flags(display, system);
-                assert_ne!(flags & ES_CONTINUOUS, 0,
-                    "ES_CONTINUOUS missing for display={display}, system={system}");
+                assert_ne!(
+                    flags & ES_CONTINUOUS,
+                    0,
+                    "ES_CONTINUOUS missing for display={display}, system={system}"
+                );
             }
         }
     }

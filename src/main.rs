@@ -26,7 +26,7 @@ use windows_sys::Win32::System::Threading::WaitForSingleObject;
 /// Convert a process exit code to u8, clamping values > 255.
 /// Windows allows 32-bit exit codes but ExitCode::from() takes u8.
 fn exit_code_to_u8(code: i32) -> u8 {
-    if code < 0 || code > 255 {
+    if !(0..=255).contains(&code) {
         1 // Non-representable exit codes become generic failure
     } else {
         code as u8
@@ -59,7 +59,11 @@ fn main() -> ExitCode {
     let show_system = config.keep_system || !config.keep_display;
     println!(
         "[buzz] Awake mode engaged{}{}{}",
-        if config.keep_display { " [display]" } else { "" },
+        if config.keep_display {
+            " [display]"
+        } else {
+            ""
+        },
         if show_system { " [system]" } else { "" },
         match config.timeout {
             Some(s) => format!(" for {} seconds", s),
@@ -108,7 +112,7 @@ fn run_watch_pid(config: &args::Config, flags: u32, pid: u32) -> u8 {
 
     println!("[buzz] Watching PID {pid}");
     let start = Instant::now();
-    let deadline = config.timeout.map(|s| Duration::from_secs(s));
+    let deadline = config.timeout.map(Duration::from_secs);
 
     loop {
         if !process::is_alive(pid) {
@@ -138,7 +142,7 @@ fn run_watch_pid(config: &args::Config, flags: u32, pid: u32) -> u8 {
 /// Ctrl+C is handled by the signal handler which calls process::exit() directly.
 fn run_idle(config: &args::Config, flags: u32) -> u8 {
     let start = Instant::now();
-    let deadline = config.timeout.map(|s| Duration::from_secs(s));
+    let deadline = config.timeout.map(Duration::from_secs);
 
     loop {
         if let Some(d) = deadline {
@@ -184,7 +188,7 @@ fn run_subprocess(config: &args::Config, flags: u32) -> u8 {
     }
 
     let start = Instant::now();
-    let deadline = config.timeout.map(|s| Duration::from_secs(s));
+    let deadline = config.timeout.map(Duration::from_secs);
     let child_handle = child.as_raw_handle();
 
     loop {

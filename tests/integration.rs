@@ -11,9 +11,9 @@ use std::time::{Duration, Instant};
 fn buzz_bin() -> String {
     let mut path = std::env::current_exe()
         .unwrap()
-        .parent()     // deps/
+        .parent() // deps/
         .unwrap()
-        .parent()     // debug/ or release/
+        .parent() // debug/ or release/
         .unwrap()
         .to_path_buf();
     path.push("buzz.exe");
@@ -79,10 +79,7 @@ fn invalid_timeout_value_exits_nonzero() {
 #[test]
 fn timeout_exits_after_specified_seconds() {
     let start = Instant::now();
-    let output = Command::new(buzz_bin())
-        .args(["-t", "2"])
-        .output()
-        .unwrap();
+    let output = Command::new(buzz_bin()).args(["-t", "2"]).output().unwrap();
     let elapsed = start.elapsed();
 
     assert!(output.status.success(), "should exit cleanly on timeout");
@@ -99,10 +96,7 @@ fn timeout_exits_after_specified_seconds() {
 #[test]
 fn timeout_zero_exits_immediately() {
     let start = Instant::now();
-    let output = Command::new(buzz_bin())
-        .args(["-t", "0"])
-        .output()
-        .unwrap();
+    let output = Command::new(buzz_bin()).args(["-t", "0"]).output().unwrap();
     let elapsed = start.elapsed();
 
     assert!(output.status.success());
@@ -123,7 +117,10 @@ fn runs_subprocess_and_returns_its_exit_code_success() {
         .output()
         .unwrap();
 
-    assert!(output.status.success(), "should propagate child exit code 0");
+    assert!(
+        output.status.success(),
+        "should propagate child exit code 0"
+    );
     let stdout = String::from_utf8_lossy(&output.stdout);
     assert!(stdout.contains("Command exited"), "stdout: {stdout}");
 }
@@ -149,10 +146,7 @@ fn subprocess_nonexistent_command_exits_nonzero() {
 
     assert!(!output.status.success());
     let stderr = String::from_utf8_lossy(&output.stderr);
-    assert!(
-        stderr.contains("failed to start"),
-        "stderr: {stderr}"
-    );
+    assert!(stderr.contains("failed to start"), "stderr: {stderr}");
 }
 
 #[test]
@@ -172,10 +166,7 @@ fn subprocess_killed_on_timeout() {
         "should not wait for full ping; elapsed: {elapsed:?}"
     );
     let stdout = String::from_utf8_lossy(&output.stdout);
-    assert!(
-        stdout.contains("Timeout reached"),
-        "stdout: {stdout}"
-    );
+    assert!(stdout.contains("Timeout reached"), "stdout: {stdout}");
 }
 
 // ─── Flag Combinations ────────────────────────────────────────────────────
@@ -221,10 +212,7 @@ fn all_flags_with_command() {
 
 #[test]
 fn awake_engaged_message_on_startup() {
-    let output = Command::new(buzz_bin())
-        .args(["-t", "1"])
-        .output()
-        .unwrap();
+    let output = Command::new(buzz_bin()).args(["-t", "1"]).output().unwrap();
 
     let stdout = String::from_utf8_lossy(&output.stdout);
     assert!(
@@ -235,10 +223,7 @@ fn awake_engaged_message_on_startup() {
 
 #[test]
 fn restore_message_on_clean_exit() {
-    let output = Command::new(buzz_bin())
-        .args(["-t", "1"])
-        .output()
-        .unwrap();
+    let output = Command::new(buzz_bin()).args(["-t", "1"]).output().unwrap();
 
     let stdout = String::from_utf8_lossy(&output.stdout);
     assert!(
@@ -269,8 +254,14 @@ fn version_flag_prints_version_and_exits_zero() {
     let stdout = String::from_utf8_lossy(&output.stdout);
 
     assert!(output.status.success());
-    assert!(stdout.contains("buzz"), "should print buzz; stdout: {stdout}");
-    assert!(stdout.contains("1.0.0"), "should print version; stdout: {stdout}");
+    assert!(
+        stdout.contains("buzz"),
+        "should print buzz; stdout: {stdout}"
+    );
+    assert!(
+        stdout.contains("1.0.0"),
+        "should print version; stdout: {stdout}"
+    );
 }
 
 // ─── Watch PID (-w) ──────────────────────────────────────────────────────
@@ -285,10 +276,7 @@ fn watch_pid_nonexistent_exits_nonzero() {
 
     assert!(!output.status.success());
     let stderr = String::from_utf8_lossy(&output.stderr);
-    assert!(
-        stderr.contains("not running"),
-        "stderr: {stderr}"
-    );
+    assert!(stderr.contains("not running"), "stderr: {stderr}");
 }
 
 #[test]
@@ -307,10 +295,7 @@ fn watch_pid_invalid_exits_nonzero() {
 
 #[test]
 fn default_mode_shows_system_indicator() {
-    let output = Command::new(buzz_bin())
-        .args(["-t", "1"])
-        .output()
-        .unwrap();
+    let output = Command::new(buzz_bin()).args(["-t", "1"]).output().unwrap();
 
     let stdout = String::from_utf8_lossy(&output.stdout);
     assert!(

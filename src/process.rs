@@ -13,8 +13,7 @@ const PROCESS_QUERY_LIMITED_INFORMATION: u32 = 0x1000;
 /// Returns false if the process has exited or can't be opened.
 pub fn is_alive(pid: u32) -> bool {
     unsafe {
-        let handle =
-            OpenProcess(SYNCHRONIZE | PROCESS_QUERY_LIMITED_INFORMATION, 0, pid);
+        let handle = OpenProcess(SYNCHRONIZE | PROCESS_QUERY_LIMITED_INFORMATION, 0, pid);
         if handle.is_null() {
             return false; // Can't open — process doesn't exist or access denied
         }

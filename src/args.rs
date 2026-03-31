@@ -56,7 +56,11 @@ fn parse_duration(input: &str) -> Result<u64, String> {
                 'h' | 'H' => total += n * 3600,
                 'm' | 'M' => total += n * 60,
                 's' | 'S' => total += n,
-                _ => return Err(format!("invalid duration unit '{ch}' in '{input}' (use h, m, or s)")),
+                _ => {
+                    return Err(format!(
+                        "invalid duration unit '{ch}' in '{input}' (use h, m, or s)"
+                    ))
+                }
             }
         }
     }
