@@ -148,12 +148,14 @@ buzz -s -- -my-weird-command   # use -- for commands starting with -
 
 ## Documentation
 
-| Document | Description |
-|---|---|
-| [User Guide](docs/USER_GUIDE.md) | Complete usage guide — all flags, scenarios, and examples |
-| [Troubleshooting](docs/TROUBLESHOOTING.md) | Common problems and fixes |
-| [Architecture](ARCHITECTURE.md) | Internals, module design, and contributor guide |
-| [Changelog](CHANGELOG.md) | Release notes |
+| Document | Audience | Description |
+|---|---|---|
+| [User Guide](docs/USER_GUIDE.md) | Users | All flags, scenarios, and examples |
+| [Troubleshooting](docs/TROUBLESHOOTING.md) | Users | Common problems and fixes |
+| [Architecture](ARCHITECTURE.md) | Engineers | System design, module relationships, API internals |
+| [Design Decisions](docs/DESIGN_DECISIONS.md) | Engineers | Why we chose X over Y (ADR format) |
+| [Contributing](docs/CONTRIBUTING.md) | Contributors | Build, test, lint, PR process, code standards |
+| [Changelog](CHANGELOG.md) | Everyone | Release notes |
 
 ---
 
@@ -176,7 +178,7 @@ cargo test --test integration  # integration tests only (22)
 3. Test: `cargo fmt && cargo clippy && cargo test`
 4. Submit a pull request
 
-See [ARCHITECTURE.md](ARCHITECTURE.md) for code standards.
+See [Contributing](docs/CONTRIBUTING.md) for build instructions and code standards.
 
 ---
 
