@@ -80,7 +80,9 @@ Done. `buzz` is in your PATH. Works immediately.
 ### Download binary
 
 1. Download `buzz.exe` from [latest release](https://github.com/mahajandhruv26/buzz/releases/latest)
-2. Put it in `C:\Windows\System32\` (needs admin) or any folder in your PATH
+2. Put it somewhere permanent, then either:
+   - Copy to `C:\Windows\System32\` (needs admin, works immediately)
+   - Or add its folder to PATH ([how?](docs/TROUBLESHOOTING.md#command-not-found))
 
 ### Build from source
 
