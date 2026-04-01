@@ -68,9 +68,21 @@ You should see an active `SYSTEM` or `DISPLAY` request from `buzz.exe`.
 
 ## Installation
 
-### Option 1: Build from Source
+### Scoop (recommended)
 
-**Prerequisites:** [Rust 1.70+](https://rustup.rs/) with the `stable-x86_64-pc-windows-msvc` target.
+```powershell
+scoop bucket add buzz https://github.com/mahajandhruv26/buzz
+scoop install buzz
+```
+
+Done. `buzz` is in your PATH. Works immediately.
+
+### Download binary
+
+1. Download `buzz.exe` from [latest release](https://github.com/mahajandhruv26/buzz/releases/latest)
+2. Put it in `C:\Windows\System32\` (needs admin) or any folder in your PATH
+
+### Build from source
 
 ```powershell
 git clone https://github.com/mahajandhruv26/buzz.git
@@ -78,23 +90,9 @@ cd buzz
 cargo build --release
 ```
 
-Binary: `target\release\buzz.exe`
+Binary at `target\release\buzz.exe`. Add its folder to PATH or copy it to `C:\Windows\System32\`.
 
-### Option 2: Download from Releases
-
-Download the latest `buzz-x86_64-pc-windows-msvc.zip` from [GitHub Releases](https://github.com/mahajandhruv26/buzz/releases), extract, and run.
-
-### Add to PATH
-
-So you can type `buzz` from anywhere:
-
-1. Press `Win + S` and search **"Environment Variables"**
-2. Click **"Edit the system environment variables"** then **"Environment Variables"**
-3. Under **User variables**, select **Path** and click **Edit**
-4. Click **New** and add the folder containing `buzz.exe`
-5. Restart your terminal
-
-**Verify:**
+### Verify
 
 ```powershell
 buzz -h
