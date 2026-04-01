@@ -84,6 +84,14 @@ Done. `buzz` is in your PATH. Works immediately.
    - Copy to `C:\Windows\System32\` (needs admin, works immediately)
    - Or add its folder to PATH ([how?](docs/TROUBLESHOOTING.md#command-not-found))
 
+### Cargo install (if you have Rust)
+
+```powershell
+cargo install --git https://github.com/mahajandhruv26/buzz
+```
+
+One command. No PATH setup needed — goes straight into `~/.cargo/bin/`.
+
 ### Build from source
 
 ```powershell
@@ -92,7 +100,7 @@ cd buzz
 cargo build --release
 ```
 
-Binary at `target\release\buzz.exe`. Add its folder to PATH or copy it to `C:\Windows\System32\`.
+Binary at `target\release\buzz.exe`. Copy to `C:\Windows\System32\` or add its folder to PATH.
 
 ### Verify
 
