@@ -61,6 +61,32 @@ It won't work:
 
 ---
 
+## Windows SmartScreen warning when running buzz.exe
+
+**Cause:** Windows warns about any `.exe` downloaded from the internet that isn't signed with a code-signing certificate. This is normal for all small open-source tools.
+
+**What you see:**
+
+> "Windows protected your PC — Microsoft Defender SmartScreen prevented an unrecognized app from starting."
+
+**Fix:**
+
+1. Click **"More info"**
+2. Click **"Run anyway"**
+
+This is a one-time step. Windows remembers your choice and won't warn again for this file.
+
+**To avoid this entirely:** Install via Scoop instead of downloading the `.exe` directly:
+
+```powershell
+scoop bucket add buzz https://github.com/mahajandhruv26/buzz
+scoop install buzz
+```
+
+Scoop installs never trigger SmartScreen.
+
+---
+
 ## Command not found
 
 **Cause:** `buzz.exe` isn't in your PATH.
