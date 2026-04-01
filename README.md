@@ -17,14 +17,12 @@ Single binary. ~200 KB. No installation. No dependencies. No admin rights.
 ## Quick Start
 
 ```powershell
-# Build
-cargo build --release
-
-# Run
-.\target\release\buzz.exe -h
+scoop bucket add buzz https://github.com/mahajandhruv26/buzz
+scoop install buzz
+buzz -s -t 10s
 ```
 
-Or copy `buzz.exe` anywhere on your machine and run it. That's it — no installer, no setup.
+Or download `buzz.exe` from [releases](https://github.com/mahajandhruv26/buzz/releases/latest) and run it. No installer, no setup.
 
 **Verify it's working** — while `buzz` is running, open another terminal:
 
