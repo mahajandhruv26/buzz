@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.singleton.1.6.0.schema.json
+PackageIdentifier: mahajandhruv26.buzz
+PackageVersion: 1.0.0
+PackageName: buzz
+Publisher: mahajandhruv26
+License: MIT
+LicenseUrl: https://github.com/mahajandhruv26/buzz/blob/main/LICENSE
+ShortDescription: Keep your Windows machine awake from the command line. Like macOS caffeinate, but for Windows.
+Description: >-
+  buzz is a Windows command-line tool that prevents your system from sleeping.
+  It uses the Windows SetThreadExecutionState API to keep the system and/or display awake.
+  Supports timed awakening, subprocess execution, user activity simulation, and PID watching.
+  Single binary, ~200 KB, no installation, no dependencies, no admin rights.
+Tags:
+  - caffeinate
+  - sleep
+  - awake
+  - windows
+  - cli
+  - power-management
+  - productivity
+PackageUrl: https://github.com/mahajandhruv26/buzz
+Installers:
+  - Architecture: x64
+    InstallerType: zip
+    InstallerUrl: https://github.com/mahajandhruv26/buzz/releases/download/v1.0.0/buzz-x86_64-pc-windows-msvc.zip
+    InstallerSha256: ecea002eba15aa06b989bff8661616897384289be35632e5944f691445f5f0e1
+    NestedInstallerType: portable
+    NestedInstallerFiles:
+      - RelativeFilePath: buzz.exe
+        PortableCommandAlias: buzz
+ManifestType: singleton
+ManifestVersion: 1.6.0

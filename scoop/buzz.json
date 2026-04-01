@@ -1,0 +1,21 @@
+{
+    "version": "1.0.0",
+    "description": "Keep your Windows machine awake from the command line. Like macOS caffeinate, but for Windows.",
+    "homepage": "https://github.com/mahajandhruv26/buzz",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/mahajandhruv26/buzz/releases/download/v1.0.0/buzz-x86_64-pc-windows-msvc.zip",
+            "hash": "ecea002eba15aa06b989bff8661616897384289be35632e5944f691445f5f0e1"
+        }
+    },
+    "bin": "buzz.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/mahajandhruv26/buzz/releases/download/v$version/buzz-x86_64-pc-windows-msvc.zip"
+            }
+        }
+    }
+}
