@@ -26,8 +26,15 @@ jobs:
         run: |
           Compress-Archive -Path target/release/buzz.exe -DestinationPath buzz-x86_64-pc-windows-msvc.zip
 
+      - name: Copy standalone exe
+        shell: pwsh
+        run: |
+          Copy-Item target/release/buzz.exe buzz.exe
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: buzz-x86_64-pc-windows-msvc.zip
+          files: |
+            buzz.exe
+            buzz-x86_64-pc-windows-msvc.zip
           generate_release_notes: true
