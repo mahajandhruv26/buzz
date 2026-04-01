@@ -153,7 +153,7 @@ buzz -s -- -my-weird-command   # use -- for commands starting with -
 | [User Guide](docs/USER_GUIDE.md) | Users | All flags, scenarios, and examples |
 | [Troubleshooting](docs/TROUBLESHOOTING.md) | Users | Common problems and fixes |
 | [Architecture](ARCHITECTURE.md) | Engineers | System design, module relationships, API internals |
-| [Design Decisions](docs/DESIGN_DECISIONS.md) | Engineers | Why we chose X over Y (ADR format) |
+| [Design Decisions](DESIGN_DECISIONS.md) | Engineers | Why we chose X over Y (ADR format) |
 | [Contributing](docs/CONTRIBUTING.md) | Contributors | Build, test, lint, PR process, code standards |
 | [Changelog](CHANGELOG.md) | Everyone | Release notes |
 
